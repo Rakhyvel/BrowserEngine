@@ -11,8 +11,8 @@ public class DOMNode {
 
 	public DOMNode(String data) {
 		Queue<String> tokens = removeWhiteSpace(data);
-		attributes.put("tagname", tokens.remove());
-		
+		attributes.put("tagname", tokens.remove().toLowerCase());
+
 		// Goes through tokens, maps values to attr. names
 		while (tokens.size() >= 3) {
 			String attributeName = tokens.remove();
@@ -43,19 +43,23 @@ public class DOMNode {
 		LinkedList<String> retval = new LinkedList<>();
 		String[] array = data.split("(?=[ \\=\"])|(?<=[ \\=\"])");
 		boolean quotation = false;
-		
+
 		for (int i = 0; i < array.length; i++) {
 			quotation = array[i].equals("\"");
 			if (!array[i].equals(" ") || quotation) {
 				retval.add(array[i]);
 			}
 		}
-		
+
 		return (Queue<String>) retval;
 	}
-	
+
 	public String tagname() {
 		return attributes.get("tagname");
+	}
+
+	public void setTagname(String newTagname) {
+		attributes.put("tagname", newTagname);
 	}
 
 	public void print(String buffer) {
@@ -68,6 +72,5 @@ public class DOMNode {
 				((DOMNode) child).print(buffer);
 			}
 		}
-		System.out.println(buffer.substring(0, buffer.length() - 3) + "end " + attributes.get("tagname"));
 	}
 }

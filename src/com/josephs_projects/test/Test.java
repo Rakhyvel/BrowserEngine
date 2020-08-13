@@ -8,7 +8,8 @@ class Test {
 
 	public static void main(String[] args) {
 		try {
-			Document doc = new Document("http://josephs-projects.com");
+			// file:///c:/users/josep/documents/test.html
+			Document doc = new Document("https://google.com");
 			doc.domTree.print("|");
 			doc.equals(null);
 		} catch (IOException e) {

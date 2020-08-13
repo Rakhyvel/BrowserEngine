@@ -2,7 +2,7 @@ package com.josephs_projects.browserEngine;
 
 public class Token {
 	public enum Type {
-		STARTOPEN, END, STARTCLOSE, TEXT
+		STARTOPEN, END, STARTCLOSE, TEXT, LBRACE, RBRACE, SEMICOLON
 	}
 	
 	Type type;
